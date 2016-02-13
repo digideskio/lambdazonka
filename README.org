@@ -4,6 +4,10 @@ This is a project skeleton to show that all of the Haskell [[https://github.com/
 AWS API libraries]] compile with [[https://github.com/ghcjs/ghcjs][GHCJS]] and could be deployed to [[https://aws.amazon.com/lambda/][AWS
 Lambda]].
 
+*NOTE: It's been discovered that Amazonka uses the haskell network
+library. This library hasn't been fully shimmed for GHCJS yet. So this
+whole thing will have to wait for a bit. :(*
+
 * Basic Dependencies
 
   - [[https://nodejs.org/en/blog/release/v0.10.36/][Node.js Stable 0.10.x]] - AWS Lambda is [[http://docs.aws.amazon.com/lambda/latest/dg/current-supported-versions.html][currently 0.10.36]].  Don't
@@ -13,7 +17,14 @@ Lambda]].
   - [[http://haskellstack.org][Haskell Stack]] - Install the latest for your OS and then run *stack
     setup* in your $HOME. This will give you a default GHC
     installation inside the $HOME/.stack directory.
-  
+
+  - Additional Packages - You'll need some basic developer packages
+    before bootstrapping GHCJS.  Here's an example on Ubuntu/Debian
+    #+begin_src sh
+      apt-get install -y build-essential libtinfo-dev
+      stack setup
+    #+end_src
+
 * Stack Setup (specific to GHCJS)
 
   In this project directory and with Stack & Node.js in your PATH
